@@ -37,6 +37,7 @@ const student = {
 };
 
 console.log(student);
+console.log(student.cgpa);
 
 //Arrays
 //Will learn next
