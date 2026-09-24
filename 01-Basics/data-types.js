@@ -1,4 +1,4 @@
-//Data Types :- Primitive & Non-primitive data types
+//Data Types : Primitive & Non-primitive data types
 
 //Primitive Data Types
 
@@ -26,7 +26,7 @@ console.log(z);
 
 //Non-rimitive Data Types
 
-//Objects:- Arrays & Functions
+//Objects: Arrays & Functions
 
 //Objects
 const student = {

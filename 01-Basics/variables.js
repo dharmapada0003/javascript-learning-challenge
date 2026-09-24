@@ -2,6 +2,7 @@
 
 //let
 let myAge = 25;
+
 myAge = 26; //Value can be updated & can be re-declared
 
 //const
