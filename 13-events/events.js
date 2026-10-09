@@ -6,7 +6,9 @@
 // 2. Keyboard Events
 // 3. Form Events
 // 4. Clipboard Events
-// 7. Touch Events
+// 5. Touch Events
+
+// Event Listener: It waits for an event to happen and then runs some code.
 
 //syntax
 // element.addEventListener("event", function () {
@@ -197,7 +199,7 @@ focusInBox.addEventListener("focusin", () => {
   console.log("Element received focus!");
 });
 
-// focusout Event: Runs when an element or its child loses focus.
+//h. focusout Event: Runs when an element or its child loses focus.
 
 //Ex-1
 let focusOutBox = document.getElementById("focusOutBox");
@@ -233,4 +235,33 @@ let pasteInput = document.getElementById("pasteInput");
 
 pasteInput.addEventListener("paste", () => {
   alert("Text pasted!");
+});
+
+//5. Touch Events: Used mainly for touch-screen devices.
+
+//a. touchstart Event: Runs when a finger touches the screen.
+
+//Ex-1
+let touchStartButton = document.getElementById("touchStartButton");
+
+touchStartButton.addEventListener("touchstart", () => {
+  alert("Touch started!");
+});
+
+//b. touchmove Event: Runs when a finger moves on the screen.
+
+//Ex-1
+let touchMoveBox = document.getElementById("touchMoveBox");
+
+touchMoveBox.addEventListener("touchmove", () => {
+  console.log("Finger is moving!");
+});
+
+//c. touchend Event: Runs when a finger leaves the screen.
+
+//Ex-1
+let touchEndButton = document.getElementById("touchEndButton");
+
+touchEndButton.addEventListener("touchend", () => {
+  alert("Touch ended!");
 });

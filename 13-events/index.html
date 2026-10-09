@@ -77,7 +77,14 @@
 
     <input id="cutInput" value="Cut this text" /><br /><br />
 
-    <input id="pasteInput" placeholder="Paste something" />
+    <input id="pasteInput" placeholder="Paste something" /><br /><br />
+
+    <button id="touchStartButton">Touch Me</button><br /><br />
+
+    <div id="touchMoveBox">Move your finger here</div>
+    <br /><br />
+
+    <button id="touchEndButton">Touch Me</button><br /><br />
 
     <!-- Common Event Object Properties and Methods -->
     <h2>Event Object Properties and Methods</h2>
@@ -85,9 +92,82 @@
 
     <button id="clickEventButton">Click Me</button><br /><br />
 
-    <button id="targetButton">Click Me</button>
+    <button id="targetButton">Click Me</button><br /><br />
+
+    <button id="currentTargetButton">Click</button><br /><br />
+
+    <form id="preventForm">
+      <button type="submit">Submit</button>
+    </form>
+    <br /><br />
+
+    <a href="https://www.google.com" id="preventLink"> Click this link </a
+    ><br /><br />
+
+    <div id="clientXBox">Click anywhere inside this box</div>
+    <br /><br />
+
+    <div id="clientYBox">Click anywhere inside this box</div>
+    <br /><br />
+
+    <input id="keyInput" placeholder="Enter text" /><br /><br />
+
+    <input id="codeInput" placeholder="Enter text" /><br /><br />
+
+    <input
+      type="text"
+      id="altKeyInput"
+      placeholder="Press a key..."
+    /><br /><br />
+
+    <input
+      type="text"
+      id="ctrlKeyInput"
+      placeholder="Press a key..."
+    /><br /><br />
+
+    <input
+      type="text"
+      id="shiftKeyInput"
+      placeholder="Press a key..."
+    /><br /><br />
+
+    <!-- Event Handling Without Event Listener -->
+    <h2>Event Handling Without Event Listener</h2>
+    <br />
+    <button id="myButton">Click Me!</button>
+
+    <!-- Inline Event Handling in JavaScript -->
+    <h2>Inline Event Handling</h2>
+    <br /><br />
+
+    <!-- onclick Event -->
+    <button onclick="alert('Button clicked!')">Click Me</button><br /><br />
+
+    <!-- onmouseover Event -->
+    <p onmouseover="alert('Mouse is here!')">Move mouse over me</p>
+    <br />
+
+    <!-- Changing Text -->
+    <p id="messageText">Hello</p>
+    <br />
+
+    <button onclick="messageText.innerHTML = 'Welcome!'">Change Text</button
+    ><br /><br />
+
+    <!-- Changing Color -->
+    <p id="colorText">Hello World</p>
+    <br />
+
+    <button ondblclick="colorText.style.color = 'red'">
+      Double Click To Change Color</button
+    ><br /><br />
+
+    <!-- Calling a Function -->
+    <button onclick="showMessage()">Show Message</button>
 
     <script src="/13-events/events.js"></script>
     <script src="/13-events/event-object.js"></script>
+    <script src="/13-events/inline-event-handling.js"></script>
   </body>
 </html>

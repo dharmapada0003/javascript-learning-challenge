@@ -3,3 +3,15 @@
   width: 150px;
   background-color: aqua;
 }
+
+#clientXBox {
+  width: 300px;
+  height: 150px;
+  background-color: lightblue;
+}
+
+#clientYBox {
+  width: 300px;
+  height: 150px;
+  background-color: lightgreen;
+}
