@@ -1,0 +1,10 @@
+.para {
+  font-size: 20px;
+  font-weight: 700;
+  color: purple;
+}
+
+.newClass {
+  background-color: aqua;
+  font-family: cursive;
+}
