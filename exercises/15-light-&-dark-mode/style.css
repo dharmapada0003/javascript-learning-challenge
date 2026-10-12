@@ -1,0 +1,20 @@
+#btn {
+  padding: 10px;
+  border-radius: 10px;
+  color: blue;
+  background-color: aqua;
+  border: 1px solid gray;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+
+.light {
+  background-color: white;
+  color: black;
+}
