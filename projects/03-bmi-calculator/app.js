@@ -15,7 +15,7 @@ form.addEventListener("submit", (evt) => {
   } else if (height === " " || height <= 0 || isNaN(height)) {
     alert("Please enter a valid height!");
   } else {
-    bmiResult = (weight * 10000) / (height * height);
+    bmiResult = ((weight * 10000) / (height * height)).toFixed(2);
     console.log(bmiResult);
     result.innerText = bmiResult;
   }
