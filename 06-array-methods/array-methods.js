@@ -26,7 +26,7 @@ console.log(days);
 
 console.log(days.toString());
 
-//4. concata(): This method creates a new array by joining multiple arrays & return the result
+//4. concat(): This method creates a new array by joining multiple arrays & return the result
 
 let ages = [18, 21, 25, 30, 35];
 
@@ -83,3 +83,39 @@ console.log(countries.splice(3, 0, "China"));
 console.log(countries.splice(1, 1, "Thailand"));
 
 console.log(countries);
+
+// join(separator): It is used to combine all elements of an array into a single string, with an optional separator between elements.
+
+//Ex-1 : Default separator
+let arr = ["Hello", "World", "JS"];
+
+console.log(arr.join());
+
+//Ex-2 : Using a space as a separator
+let msg = ["JavaScript", "is", "interesting!"];
+
+console.log(msg.join(" "));
+
+//Ex-3 : Using a hyphen
+let nums = [1, 2, 3, 4];
+
+console.log(nums.join("-"));
+
+//Ex-4 : Joining with an empty string
+let language = ["J", "a", "v", "a", "S", "c", "r", "i", "p", "t"];
+
+console.log(language.join(""));
+
+//Ex-5 : Joining an array of numbers
+let sum = [10, 20, 30];
+
+let result = sum.join(" + ");
+
+console.log(result); //Result is a string, not a number.
+
+//Ex-6
+// Special case: null, undefined and empty array slots become empty strings when joined.
+
+console.log([1, null, undefined, 4].join("-"));
+
+//Note: join() does not modify the original array. It returns a new string.
