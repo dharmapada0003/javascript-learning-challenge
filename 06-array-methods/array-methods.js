@@ -343,4 +343,14 @@ const myOutput3 = Array.of([1, 2], [3, 4]);
 
 console.log(myOutput3);
 
+//Ex-4
+const price1 = 200;
+const price2 = 400;
+const price3 = 700;
+const price4 = 800;
+
+const allPrices = Array.of(price1, price2, price3, price4);
+
+console.log(allPrices);
+
 //Note: Array.of() does not flatten the nested arrays. It keeps each array as an element.
