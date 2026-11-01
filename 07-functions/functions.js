@@ -169,3 +169,53 @@ function calculateSum(a, b, callback) {
 calculateSum(10, 20, (answer) => {
   console.log("The result is:", answer);
 });
+
+//-----------Passing objects as parameter-----------
+
+//Ex-1
+const productObj1 = {
+  productName: "Soap",
+  productPrice: 35,
+};
+
+const productObj2 = {
+  productName: "Shampoo",
+  productPrice: 145,
+};
+
+function receiveObject(anyObj) {
+  return `Product name is ${anyObj.productName} & its price is ${anyObj.productPrice} rupees.`;
+}
+
+const objectOutput = receiveObject(productObj1);
+const objectOutput2 = receiveObject(productObj2);
+
+console.log(objectOutput);
+console.log(objectOutput2);
+
+//Ex-2 : -------Passing objects as arguments----------
+
+const objectOutput3 = receiveObject({
+  productName: "Hair oil",
+  productPrice: 230,
+});
+
+console.log(objectOutput3);
+
+//-----------Passing array as parameter-----------
+
+//Ex-1
+const score = [200, 320, 250, 190, 280];
+
+const prices = [45, 120, 300, 450, 70];
+
+function receiveArray(anyArray) {
+  console.log(anyArray[2]);
+}
+
+receiveArray(score);
+receiveArray(prices);
+
+//Ex-2 : -------Passing array as arguments----------
+
+receiveArray(["apple", "banana", "grapes", "mango", "orange"]);
