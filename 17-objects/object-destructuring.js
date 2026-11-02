@@ -86,6 +86,22 @@ console.log(commonCity2);
 console.log(commonCountry2);
 console.log(pinCode2);
 
+//Ex-4 : extract country directly
+
+const { address } = commonUser3;
+
+const { country: myCountry2 } = address;
+
+console.log(myCountry2);
+
+//Ex-5 : extracted pin directly as I destructured more using address & the address was destructured before using commonUser3.
+
+const { more } = address;
+
+const { pin } = more;
+
+console.log(pin);
+
 //------------Destructuring in Function Parameters--------------
 //We can directly extract object properties inside function parameters.
 
