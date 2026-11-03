@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #e8e085;
+  background-color: #363199;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form {
+  height: 400px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  background-color: darkcyan;
+  margin-top: 30px;
+  border: 1px solid #e8e085;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 1px gray;
+}
+
+.para {
+  color: #fefaf3;
+  font-weight: 500;
+  width: 90%;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+#input {
+  padding: 10px;
+  outline: none;
+  border: 1.5px solid #4c2365;
+  border-radius: 5px;
+  width: 250px;
+}
+
+#btn {
+  padding: 8px;
+  background-color: #d98327;
+  color: #fefaf3;
+  font-size: 14px;
+  font-weight: 550;
+  border: 1.5px solid #4c2365;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#guesses,
+#remainingGuesses,
+#lowHigh {
+  color: #4c2365;
+}
