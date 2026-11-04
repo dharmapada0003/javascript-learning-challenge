@@ -46,7 +46,8 @@ body {
   width: 250px;
 }
 
-#btn {
+#btn,
+#newBtn {
   padding: 8px;
   background-color: #d98327;
   color: #fefaf3;

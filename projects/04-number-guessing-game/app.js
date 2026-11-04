@@ -26,7 +26,7 @@ form.addEventListener("submit", (evt) => {
     } else {
       if (inputToNumber === randomNum) {
         alert("Congratulations!🎉You guessed the right number.");
-        submitBtn.disabled = true;
+        endGame();
       }
 
       //checking guessed number is high or low
@@ -44,8 +44,7 @@ form.addEventListener("submit", (evt) => {
     }
   } else {
     alert(`You are out of chance!🥹 The correct number was ${randomNum}.`);
-    submitBtn.disabled = true;
-    tryNewGame();
+    endGame();
   }
 
   remainingGuesses.innerText = count;
@@ -55,18 +54,27 @@ form.addEventListener("submit", (evt) => {
   input.value = "";
 });
 
-const newBtn = document.createElement("button");
-newBtn.innerText = "Play Again";
-newBtn.setAttribute("id", "btn");
+function endGame() {
+  lowHigh.innerText = "";
+  guessedNumbers = [];
+  submitBtn.disabled = true;
+  input.setAttribute("disabled", "true");
+
+  const newBtn = document.createElement("button");
+  newBtn.innerText = "Play Again";
+  newBtn.setAttribute("id", "newBtn");
+  form.append(newBtn);
+  tryNewGame();
+}
 
 function tryNewGame() {
-  form.append(newBtn);
+  const newGameBtn = document.querySelector("newBtn");
 
-  newBtn.addEventListener("click", () => {
+  newGameBtn.addEventListener("click", () => {
     randomNum = Math.floor(Math.random() * 10) + 1;
-    lowHigh.innerText = "";
-    guessedNumbers = [];
     remainingGuesses.innerText = 10;
+    form.removeChild(newBtn);
     submitBtn.disabled = false;
+    input.setAttribute("disabled", "false");
   });
 }
