@@ -1,6 +1,6 @@
 const form = document.querySelector(".form");
 let randomNum = Math.floor(Math.random() * 10) + 1;
-console.log(randomNum);
+console.log(`Random Number is: ${randomNum}`);
 
 const input = document.querySelector("#input");
 
@@ -55,10 +55,13 @@ form.addEventListener("submit", (evt) => {
 });
 
 function endGame() {
-  lowHigh.innerText = "";
-  guessedNumbers = [];
+  input.value = "";
+  // lowHigh.innerText = "";
+  // guessedNumbers = [];
   submitBtn.disabled = true;
+  submitBtn.title = "Button Disabled!";
   input.setAttribute("disabled", "true");
+  input.title = "Input Field Disabled!";
 
   const newBtn = document.createElement("button");
   newBtn.innerText = "Play Again";
@@ -68,13 +71,22 @@ function endGame() {
 }
 
 function tryNewGame() {
-  const newGameBtn = document.querySelector("newBtn");
+  const newGameBtn = document.querySelector("#newBtn");
 
   newGameBtn.addEventListener("click", () => {
     randomNum = Math.floor(Math.random() * 10) + 1;
+    console.log(`Random Number is: ${randomNum}`);
+    guessedNumbers = [];
+    lowHigh.innerText = "";
+    guesses.innerText = "";
+    lowHigh.innerText = "";
     remainingGuesses.innerText = 10;
-    form.removeChild(newBtn);
+    count = 10;
     submitBtn.disabled = false;
-    input.setAttribute("disabled", "false");
+    submitBtn.title = "";
+    input.disabled = false;
+    input.title = "";
+
+    form.removeChild(newBtn);
   });
 }
