@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
+    <title>GitHub User Finder</title>
+  </head>
+  <body>
+    <nav id="navBar">
+      <div class="logo">
+        <a href="#"><img src="./assets/github-user-finder.png" alt="" /></a>
+      </div>
+      <div class="pages">
+        <ul>
+          <li><a href="#">About</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="hero">
+      <div class="hero-title-wrapper">
+        <img src="./assets/three-lines.png" alt="" class="heading-decoration" />
+
+        <h1 class="hero-title">Discover <span>GitHub</span> Developers</h1>
+      </div>
+
+      <div class="hero-description-wrapper">
+        <p class="hero-description">
+          Search for any GitHub username and explore their profile.
+        </p>
+        <img
+          src="./assets/single-line.png"
+          alt=""
+          class="paragraph-decoration"
+        />
+      </div>
+    </div>
+    <div class="search-container">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="text"
+          placeholder="Enter GitHub username..."
+          id="username"
+        />
+        <button class="search-btn">Search</button>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
