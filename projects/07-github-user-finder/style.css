@@ -13,7 +13,7 @@ body {
 
 #navBar {
   background-color: #f8f7ff;
-  height: 60px;
+  height: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +28,7 @@ body {
 }
 
 .logo img {
-  height: 50px;
+  height: 45px;
 }
 
 .pages ul {
@@ -103,19 +103,19 @@ body {
 }
 
 .search-container {
-  max-width: 850px;
+  max-width: 650px;
   width: 100%;
-  margin: 20px auto;
+  margin: 15px auto;
   padding: 0 20px;
 }
 
 .search-box {
   display: flex;
   align-items: center;
-  background: #ffffff;
-  border: 1px solid #e5e2ff;
+  background-color: #ffffff;
+  border: 1px solid rgba(198, 193, 244, 0.867);
   border-radius: 50px;
-  padding: 5px;
+  padding: 2px;
   box-shadow: 0 8px 25px rgba(91, 46, 234, 0.12);
   transition: 0.3s ease;
 }
@@ -125,10 +125,10 @@ body {
   min-width: 0;
   border: none;
   outline: none;
-  padding: 12px 20px;
+  padding: 8px 20px;
   font-size: 16px;
   color: #111936;
-  background: transparent;
+  background-color: transparent;
 }
 
 .search-box input::placeholder {
@@ -136,7 +136,7 @@ body {
 }
 
 .search-icon {
-  font-size: 24px;
+  font-size: 20px;
   color: #64709a;
   padding-left: 15px;
 }
@@ -145,7 +145,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border: none;
   border-radius: 50px;
   background: linear-gradient(135deg, #5b2eea, #713df5);
@@ -166,9 +166,131 @@ body {
   box-shadow: 0 8px 25px rgba(91, 46, 234, 0.18);
 }
 
+.user-details-wrapper {
+  max-width: 850px;
+  width: 90%;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border: 1px solid rgba(198, 193, 244, 0.867);
+  border-radius: 30px;
+  box-shadow: 0 8px 25px rgba(91, 46, 234, 0.12);
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-container p {
+  color: #111936;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 20px 40px;
+}
+
+.profile-pic {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 3px solid rgba(198, 193, 244, 0.867);
+  box-shadow: 0 8px 25px rgba(90, 46, 234, 0.25);
+  margin-inline: 40px;
+  margin-top: 30px;
+}
+
+.user-details-container {
+  margin-top: 30px;
+  padding-right: 100px;
+}
+
+.fullName {
+  color: #111936;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.userName {
+  color: #64709a;
+  font-size: 20px;
+  font-weight: 600;
+  margin-block: 10px;
+}
+
+.bio {
+  color: #111936;
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.user-publicity {
+  display: flex;
+  justify-content: space-between;
+}
+
+.icon-style {
+  color: #5b2eea;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.followers,
+.following {
+  border-right: 1.5px solid #64709a;
+  padding-right: 50px;
+}
+
+.followers-count,
+.following-count,
+.repo-count {
+  color: #111936;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.followers-text,
+.following-text,
+.repo-text {
+  color: #64709a;
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 30px;
+}
+
+.button-wrapper {
+  color: #ffffff;
+  background: linear-gradient(135deg, #5b2eea, #713df5);
+  max-width: 250px;
+  width: 100%;
+  margin-block: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.button-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(91, 46, 234, 0.3);
+}
+
+.view-profile {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-inline: 5px;
+  cursor: pointer;
+}
+
 @media (max-width: 768px) {
   .logo img {
-    height: 45px;
+    height: 42px;
   }
 
   .hero-title {
@@ -190,6 +312,37 @@ body {
     width: 110px;
     height: 35px;
     bottom: -28px;
+  }
+
+  .search-container {
+    max-width: 500px;
+  }
+
+  .profile-pic {
+    height: 120px;
+    width: 120px;
+  }
+
+  .fullName {
+    font-size: 22px;
+  }
+
+  .userName {
+    font-size: 18px;
+  }
+
+  .bio {
+    font-size: 16px;
+  }
+
+  .icon-style {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+
+  .followers,
+  .following {
+    padding-right: 30px;
   }
 }
 
@@ -214,23 +367,22 @@ body {
     display: none;
   }
 
-  .search-box {
-    padding: 4px;
-  }
-
   .search-box input {
-    font-size: 14px;
-    padding: 12px 7px;
+    font-size: 12px;
+    padding: 8px 7px;
   }
 
   .search-icon {
-    font-size: 20px;
+    font-size: 18px;
     padding-left: 8px;
   }
 
   .search-btn {
-    padding: 10px 18px;
+    padding: 8px 16px;
     font-size: 14px;
-    gap: 5px;
+  }
+
+  .search-container {
+    max-width: 330px;
   }
 }
