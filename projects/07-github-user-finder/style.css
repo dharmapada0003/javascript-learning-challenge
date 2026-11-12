@@ -176,6 +176,7 @@ body {
   box-shadow: 0 8px 25px rgba(91, 46, 234, 0.12);
   display: flex;
   justify-content: space-between;
+  visibility: hidden;
 }
 
 .img-container {
@@ -212,10 +213,14 @@ body {
 }
 
 .userName {
-  color: #64709a;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   margin-block: 10px;
+}
+
+.userName a {
+  color: #64709a;
+  text-decoration: none;
 }
 
 .bio {
@@ -234,6 +239,11 @@ body {
   color: #5b2eea;
   font-size: 20px;
   margin-right: 10px;
+}
+
+.fa-user,
+.fa-book {
+  margin-left: 15px;
 }
 
 .followers,
@@ -266,6 +276,9 @@ body {
   width: 100%;
   margin-block: 25px;
   padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 16px;
   border-radius: 50px;
   cursor: pointer;
@@ -277,7 +290,7 @@ body {
   box-shadow: 0 5px 15px rgba(91, 46, 234, 0.3);
 }
 
-.view-profile {
+.view-profile-btn {
   border: none;
   outline: none;
   background-color: transparent;
@@ -323,6 +336,10 @@ body {
     width: 120px;
   }
 
+  .user-details-container {
+    padding-right: 50px;
+  }
+
   .fullName {
     font-size: 22px;
   }
@@ -335,6 +352,11 @@ body {
     font-size: 16px;
   }
 
+  .fa-user,
+  .fa-book {
+    margin-left: 10px;
+  }
+
   .icon-style {
     font-size: 18px;
     margin-right: 8px;
@@ -342,7 +364,50 @@ body {
 
   .followers,
   .following {
-    padding-right: 30px;
+    padding-right: 40px;
+  }
+
+  .followers-count,
+  .following-count,
+  .repo-count {
+    font-size: 16px;
+  }
+
+  .followers-text,
+  .following-text,
+  .repo-text {
+    font-size: 12px;
+    margin-left: 30px;
+  }
+
+  .button-wrapper {
+    width: 90%;
+  }
+
+  .view-profile-btn {
+    font-size: 15px;
+    margin-inline: 4px;
+  }
+}
+
+@media (max-width: 668px) {
+  .user-details-container {
+    padding-right: 40px;
+  }
+
+  .icon-style {
+    font-size: 16px;
+    margin-right: 6px;
+  }
+
+  .followers,
+  .following {
+    padding-right: 15px;
+  }
+
+  .view-profile-btn {
+    font-size: 13px;
+    margin-inline: 2px;
   }
 }
 
@@ -384,5 +449,67 @@ body {
 
   .search-container {
     max-width: 330px;
+  }
+
+  .user-details-wrapper {
+    flex-direction: column;
+  }
+
+  .img-container {
+    margin: auto;
+  }
+
+  .img-container p {
+    font-size: 12px;
+    margin: 20px auto;
+  }
+
+  .user-details-container {
+    margin: auto;
+    padding-inline: 20px;
+  }
+
+  .fullName {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .userName {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .bio {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .user-publicity {
+    margin: 0 auto;
+  }
+
+  .followers,
+  .following,
+  .public-repos {
+    margin-left: 7px;
+  }
+
+  .fa-user,
+  .fa-book {
+    margin-left: 5px;
+  }
+
+  .icon-style {
+    font-size: 16px;
+    margin-right: 8px;
+  }
+
+  .followers,
+  .following {
+    padding-right: 10px;
+  }
+
+  .button-wrapper {
+    margin: 25px auto;
   }
 }
