@@ -49,7 +49,7 @@ const newPromise = new Promise(function (resolve, reject) {
     console.log("Async Task-3 is Complete!");
 
     resolve({ name: "Dharmapada", age: 22, email: "dharmapada@example.com" });
-  }, 3000);
+  }, 1000);
 });
 
 newPromise.then(function (user) {
@@ -69,3 +69,130 @@ new Promise(function (resolve, reject) {
   console.log(fruits);
   console.log(fruits[1]);
 });
+
+//Ex-5 ------------ Handling Errors with Promises ----------------
+
+const newPromiseTwo = new Promise(function (resolve, reject) {
+  const success = false;
+
+  if (!success) {
+    resolve("Task-5 completed!");
+  } else {
+    reject("Task-5 failed!");
+  }
+});
+
+newPromiseTwo
+  .then(function (result) {
+    console.log(result);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
+//Ex-6 ----------- Promise with async/await ------------
+
+const newPromiseThree = new Promise(function (resolve, reject) {
+  setTimeout(function () {
+    resolve("Data received!");
+  }, 1000);
+});
+
+async function getData() {
+  const receivedData = await newPromiseThree;
+
+  console.log(receivedData);
+}
+
+getData();
+
+//Ex-7
+
+const newPromiseFour = new Promise(function (resolse, reject) {
+  const error = false;
+
+  setTimeout(function () {
+    if (!error) {
+      resolse({ userName: "niranjan23", age: 23, address: "Balasore" });
+    } else {
+      reject("ERROR: Something went wrong!");
+    }
+  }, 1000);
+});
+// .then(function (data) {
+//   console.log(data.address);
+// })
+// .catch(function (err) {
+//   console.log(err);
+// });
+
+// ----------- OR ---------------
+
+async function userData(params) {
+  const result = await newPromiseFour;
+
+  console.log(result);
+}
+
+userData();
+
+//Promise Chaining: Promise chaining means connecting multiple .then() methods one after another to execute asynchronous operations in sequence.
+
+//In simple words, the output of one .then() is passed to the next .then().
+
+//Ex-8
+
+const newPromiseFive = new Promise(function (resolve, reject) {
+  setTimeout(function () {
+    resolve(10);
+  }, 1000);
+})
+  .then((result) => {
+    console.log(result);
+
+    return result + 5; //15
+  })
+  .then((result) => {
+    console.log(result);
+
+    return result * 2; //30
+  })
+  .then((result) => {
+    console.log(resu); //Error
+
+    return result - 5; //25
+  })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    console.log("Promise is either fulfilled or rejected!");
+  });
+
+//Ex-9
+
+const newPromiseSix = new Promise(function (resolse, reject) {
+  const error = false;
+
+  setTimeout(function () {
+    if (!error) {
+      resolse({ userName: "akash22", age: 25, address: "Mumbai" });
+    } else {
+      reject("Something went wrong!");
+    }
+  }, 1000);
+});
+
+newPromiseSix
+  .then(function (userData) {
+    return userData.userName;
+  })
+  .then(function (username) {
+    console.log(username);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
