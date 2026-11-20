@@ -29,6 +29,8 @@ promise.then(function () {
 // Promise.race() – Returns the first settled promise.
 // Promise.allSettled() – Waits for all promises to settle.
 // Promise.any() – Returns the first fulfilled promise.
+// Promise.resolve() - Creates an already fulfilled Promise
+// Promise.reject() - Creates an already rejected Promise
 
 //Ex-2 ------------- Without Storing in a Variable ---------------
 
@@ -128,7 +130,7 @@ const newPromiseFour = new Promise(function (resolse, reject) {
 
 // ----------- OR ---------------
 
-async function userData(params) {
+async function userData() {
   const result = await newPromiseFour;
 
   console.log(result);
@@ -196,3 +198,57 @@ newPromiseSix
   .catch(function (error) {
     console.log(error);
   });
+
+//--------- Using try...catch with async/await ----------
+
+//In JavaScript, try...catch is used with Promises to handle errors when using async/await or .then().
+
+//Ex-10
+
+const newPromiseSeven = new Promise(function (resolve, reject) {
+  const error = false;
+
+  setTimeout(function () {
+    if (!error) {
+      resolve("Dharmapada");
+    } else {
+      reject("Name not found!");
+    }
+  }, 1000);
+});
+
+async function getName() {
+  try {
+    const result = await newPromiseSeven;
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getName();
+
+//------------ How it works: ---------------
+
+// try: Executes the Promise-based code.
+// await: Waits for the Promise to settle.
+// catch: Executes if the Promise rejects or an awaited operation throws an error.
+
+//------------- Promise with async/await ------------
+
+//Ex-11
+
+function getData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Hello JavaScript!");
+    }, 1000);
+  });
+}
+
+async function displayData() {
+  const result = await getData();
+  console.log(result);
+}
+
+displayData();
