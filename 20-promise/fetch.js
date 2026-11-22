@@ -307,19 +307,6 @@ throw new DOMException(
   "NetworkError",
 );
 
-//Ex-
-
-try {
-  throw new DOMException("The API request was cancelled", "AbortError");
-} catch (error) {
-  console.log("Error Name:", error.name);
-  console.log("Error Message:", error.message);
-
-  if (error.name === "AbortError") {
-    console.log("The request was cancelled");
-  }
-}
-
 //------------ Error Properties -------------
 
 // 1. name: Returns the name or type of the error.
@@ -378,3 +365,71 @@ try {
 // Output:
 // Unable to fetch user details
 // Database connection failed
+
+//Ex-1
+
+try {
+  throw new DOMException("The API request was cancelled", "AbortError");
+} catch (error) {
+  console.log("Error Name:", error.name);
+  console.log("Error Message:", error.message);
+
+  if (error.name === "AbortError") {
+    console.log("The request was cancelled");
+  }
+}
+
+//Ex-2 (InvalidCharacterError)
+
+try {
+  document.createElement("123invalid");
+} catch (error) {
+  console.log(error.name); //InvalidCharacterError
+  console.log(error.message);
+}
+
+//Ex-3 (NotFoundError)
+
+const parent = document.getElementById("parent");
+const child = document.getElementById("child");
+
+try {
+  parent.removeChild(document.createElement("p"));
+} catch (error) {
+  console.log(error.name); // NotFoundError
+}
+
+//Ex-4
+
+const controller = new AbortController();
+
+async function getData() {
+  try {
+    const response = await fetch("https://example.com/data", {
+      signal: controller.signal,
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") {
+      console.log("Fetch request was cancelled!");
+    } else {
+      console.log("Error:", error);
+    }
+  }
+}
+
+getData();
+
+// Cancel the request
+controller.abort();
+
+// controller.signal: It is a property of the AbortController object that is used to tell an operation like fetch() to listen for a cancellation request.
+
+//controller.abort(): It is a method of AbortController that cancels an ongoing asynchronous operation, such as a fetch() request.
+
+//------------- instanceof ---------------
+
+//Note: In JavaScript, the instanceof operator is used to check whether an object belongs to a particular class or constructor (or inherits from its prototype).
