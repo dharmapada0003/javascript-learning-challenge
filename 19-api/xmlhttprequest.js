@@ -77,3 +77,201 @@ document.querySelector("#sendRequest").addEventListener("click", function () {
 //   2 ->   HEADERS_RECEIVED -> Response headers received
 //   3 ->   LOADING ------->    Response is being downloaded
 //   4 ->   DONE ---------->    Request completed
+
+//--------- Ex-2 -------------
+
+const newXhr2 = new XMLHttpRequest();
+
+newXhr2.open("GET", "https://dummyjson.com/users", true);
+
+newXhr2.onload = function () {
+  // console.log(JSON.parse(newXhr2.response).users[3]);
+};
+
+newXhr2.send();
+
+//----------- Ex-3 --------------
+
+function sendHttpRequest(method, url, myCallBack) {
+  const newXhr3 = new XMLHttpRequest();
+
+  newXhr3.open(method, url, true);
+
+  newXhr3.addEventListener("load", function () {
+    // console.log(JSON.parse(newXhr3.response));
+
+    myCallBack(JSON.parse(newXhr3.response));
+  });
+
+  newXhr3.send();
+}
+
+sendHttpRequest("GET", "https://dummyjson.com/users", function (data) {
+  // console.log(data);
+});
+
+sendHttpRequest("GET", "https://dummyjson.com/products/4", (data) => {
+  // console.log(data);
+});
+
+//----------- EX-4 --------------
+
+function sendHttpRequestTwo(method, url, callBack) {
+  const newXhr4 = new XMLHttpRequest();
+
+  newXhr4.open(method, url, true);
+
+  newXhr4.onload = () => {
+    // console.log(newXhr4.response);
+
+    callBack(JSON.parse(newXhr4.response));
+  };
+
+  newXhr4.send();
+}
+
+document.querySelector("#fetch-btn").addEventListener("click", () => {
+  sendHttpRequestTwo("GET", "https://dummyjson.com/products", (data) => {
+    const randomNumber = Math.floor(Math.random() * 30 + 1);
+
+    // console.log(data.products[randomNumber].title);
+
+    document.querySelector("#img").src = data.products[randomNumber].images[0];
+
+    document.querySelector(".description").textContent =
+      data.products[randomNumber].title || "No Title Found!";
+  });
+});
+
+//-------------- Callback Hell ------------------
+
+// Callback Hell is a situation in JavaScript where multiple asynchronous callbacks are nested inside one another, resulting in deeply nested code that is difficult to read, debug and maintain.
+
+// It can be avoided using named functions, Promises and Async/Await.
+
+//---------- Ex-1 -----------
+
+function sendHttpRequestThree(method, url, callback) {
+  const newXhr5 = new XMLHttpRequest();
+
+  newXhr5.responseType = "json";
+
+  newXhr5.open(method, url, true);
+
+  newXhr5.addEventListener("load", function () {
+    callback(newXhr5.response);
+  });
+
+  newXhr5.send();
+}
+
+sendHttpRequestThree("GET", "https://dummyjson.com/users", (usersData) => {
+  // console.log(usersData.users[1].id);
+  console.log(usersData);
+
+  sendHttpRequestThree(
+    "GET",
+    `https://dummyjson.com/users/${usersData.users[1].id}/posts`,
+    (postData) => {
+      // console.log(postData.posts[1].id);
+      console.log(postData);
+
+      sendHttpRequestThree(
+        "GET",
+        `https://dummyjson.com/comments/post/${postData.posts[1].id}`,
+        (commentsData) => {
+          // console.log(commentsData.comments[0].user.id);
+          console.log(commentsData);
+
+          sendHttpRequestThree(
+            "GET",
+            `https://dummyjson.com/users/${commentsData.comments[0].user.id}`,
+            (user) => {
+              console.log(user);
+            },
+          );
+        },
+      );
+    },
+  );
+});
+
+//------------ fixing Callback Hell ---------------
+
+function sendHttpRequestFour(method, url) {
+  const newXhr6 = new XMLHttpRequest();
+
+  newXhr6.responseType = "json";
+
+  newXhr6.open(method, url, true);
+
+  const newPromise = new Promise(function (resolve, reject) {
+    newXhr6.onload = function () {
+      resolve(newXhr6.response);
+    };
+
+    newXhr6.onerror = function () {
+      reject("Request Failed!");
+    };
+  });
+
+  newXhr6.send();
+
+  return newPromise;
+}
+
+// sendHttpRequestFour("GET", "https://dummyjson.com/users")
+//   .then((usersData) => {
+//     console.log(usersData);
+
+//     return sendHttpRequestFour(
+//       "GET",
+//       `https://dummyjson.com/users/${usersData.users[1].id}/posts`,
+//     );
+//   })
+//   .then((postData) => {
+//     console.log(postData);
+
+//     return sendHttpRequestFour(
+//       "GET",
+//       `https://dummyjson.com/comments/post/${postData.posts[1].id}`,
+//     );
+//   })
+//   .then((commentsData) => {
+//     console.log(commentsData);
+
+//     return sendHttpRequestFour(
+//       "GET",
+//       `https://dummyjson.com/users/${commentsData.comments[0].user.id}`,
+//     );
+//   })
+//   .then((user) => {
+//     console.log(user);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+//-------- In Short ------------
+
+sendHttpRequestFour("GET", "https://dummyjson.com/users")
+  .then((usersData) =>
+    sendHttpRequestFour(
+      "GET",
+      `https://dummyjson.com/users/${usersData.users[1].id}/posts`,
+    ),
+  )
+  .then((postData) =>
+    sendHttpRequestFour(
+      "GET",
+      `https://dummyjson.com/comments/post/${postData.posts[1].id}`,
+    ),
+  )
+  .then((commentsData) =>
+    sendHttpRequestFour(
+      "GET",
+      `https://dummyjson.com/users/${commentsData.comments[0].user.id}`,
+    ),
+  )
+  .then((user) => console.log(user))
+  .catch((err) => console.log(err));
