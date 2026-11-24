@@ -86,6 +86,240 @@ fetch("https://catfact.ninja/fact")
   .then((data) => console.log(data))
   .catch((error) => console.log(error));
 
+//Ex-4 ---------- Using async/await & .then and .catch
+
+async function fetchData() {
+  const response = await fetch("https://dummyjson.com/recipes");
+
+  const data = await response.json();
+
+  return data;
+}
+
+fetchData()
+  .then((data) => {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+//Ex-5
+
+async function fetchUserData() {
+  const response = await fetch("https://dummyjson.com/users");
+
+  return response.json();
+}
+
+fetchUserData()
+  .then((usersData) => {
+    // console.log(usersData);
+
+    return fetch(`https://dummyjson.com/users/${usersData.users[1].id}/posts`);
+  })
+  .then((response) => response.json())
+  .then((postData) => {
+    // console.log(postData);
+
+    return fetch(`https://dummyjson.com/comments/post/${postData.posts[1].id}`);
+  })
+  .then((response) => response.json())
+  .then((commentsData) => {
+    // console.log(commentsData);
+
+    return fetch(
+      `https://dummyjson.com/users/${commentsData.comments[0].user.id}`,
+    );
+  })
+  .then((response) => response.json())
+  .then((user) => {
+    console.log(user);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+//Ex-6 ---------- Using async/await & try and catch
+
+async function fetchUser() {
+  try {
+    const userDataResponse = await fetch("https://dummyjson.com/users");
+    const usersData = await userDataResponse.json();
+
+    // console.log(usersData);
+
+    const postsResponse = await fetch(
+      `https://dummyjson.com/users/${usersData.users[1].id}/posts`,
+    );
+
+    const postData = await postsResponse.json();
+
+    // console.log(postData);
+
+    const commentsResponse = await fetch(
+      `https://dummyjson.com/comments/post/${postData.posts[1].id}`,
+    );
+    const commentsData = await commentsResponse.json();
+
+    // console.log(commentsData);
+
+    const userResponse = await fetch(
+      `https://dummyjson.com/users/${commentsData.comments[0].user.id}`,
+    );
+    const user = await userResponse.json();
+
+    console.log(user);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+fetchUser();
+
+//Ex-7 ------------ Handling HTTP errors -----------
+
+async function fetchUser() {
+  try {
+    const usersResponse = await fetch("https://dummyjson.com/users");
+
+    if (!usersResponse.ok) {
+      throw new Error(`HTTP Error: ${usersResponse.status}`);
+    }
+
+    const usersData = await usersResponse.json();
+
+    const postsResponse = await fetch(
+      `https://dummyjson.com/users/${usersData.users[1].id}/posts`,
+    );
+
+    if (!postsResponse.ok) {
+      throw new Error(`HTTP Error: ${postsResponse.status}`);
+    }
+
+    const postData = await postsResponse.json();
+
+    const commentsResponse = await fetch(
+      `https://dummyjson.com/comments/post/${postData.posts[1].id}`,
+    );
+
+    if (!commentsResponse.ok) {
+      throw new Error(`HTTP Error: ${commentsResponse.status}`);
+    }
+
+    const commentsData = await commentsResponse.json();
+
+    const userResponse = await fetch(
+      `https://dummyjson.com/users/${commentsData.comments[0].user.id}`,
+    );
+
+    if (!userResponse.ok) {
+      throw new Error(`HTTP Error: ${userResponse.status}`);
+    }
+
+    const user = await userResponse.json();
+
+    console.log(user);
+  } catch (err) {
+    console.log("Error:", err.message);
+  }
+}
+
+fetchUser();
+
+//Ex-8 ------------ Using .then and .catch --------------
+
+// fetch("https://dummyjson.com/users")
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((usersData) => {
+//     // console.log(usersData);
+
+//     return fetch(`https://dummyjson.com/users/${usersData.users[1].id}/posts`);
+//   })
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((postData) => {
+//     // console.log(postData);
+
+//     return fetch(`https://dummyjson.com/comments/post/${postData.posts[1].id}`);
+//   })
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((commentsData) => {
+//     // console.log(commentsData);
+
+//     return fetch(
+//       `https://dummyjson.com/users/${commentsData.comments[0].user.id}`,
+//     );
+//   })
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((user) => {
+//     console.log(user);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+//------------------- OR -------------------
+
+// fetch("https://dummyjson.com/users")
+//   .then((response) => response.json())
+//   .then((usersData) => {
+//     console.log(usersData);
+
+//     return fetch(`https://dummyjson.com/users/${usersData.users[1].id}/posts`);
+//   })
+//   .then((response) => response.json())
+//   .then((postData) => {
+//     console.log(postData);
+
+//     return fetch(`https://dummyjson.com/comments/post/${postData.posts[1].id}`);
+//   })
+//   .then((response) => response.json())
+//   .then((commentsData) => {
+//     console.log(commentsData);
+
+//     return fetch(
+//       `https://dummyjson.com/users/${commentsData.comments[0].user.id}`,
+//     );
+//   })
+//   .then((response) => response.json())
+//   .then((user) => {
+//     console.log(user);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+//------------------- More Simple & Clean -------------------
+
+fetch("https://dummyjson.com/users")
+  .then((response) => response.json())
+  .then((usersData) =>
+    fetch(`https://dummyjson.com/users/${usersData.users[1].id}/posts`),
+  )
+  .then((response) => response.json())
+  .then((postData) =>
+    fetch(`https://dummyjson.com/comments/post/${postData.posts[1].id}`),
+  )
+  .then((response) => response.json())
+  .then((commentsData) =>
+    fetch(`https://dummyjson.com/users/${commentsData.comments[0].user.id}`),
+  )
+  .then((response) => response.json())
+  .then((user) => {
+    console.log(user);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
 //---------- JavaScript Error Objects -------------
 
 //1. Error: General-purpose error. Used when something goes wrong.
